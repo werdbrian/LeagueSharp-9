@@ -211,14 +211,14 @@ namespace JustEzreal
             if (E.IsReady() && Config.Item("UseE").GetValue<bool>() && target.IsValidTarget(E.Range))
             {
                 {
-                    if (mode == 0)
+                  //  if (mode == 0)
                     {
                         E.Cast(target);
                     }
-                    else if (mode == 1)
+                  /*  else if (mode == 1)
                     {
                         E.Cast(Game.CursorPos);
-                    }
+                    }*/
                 }
             }
 
