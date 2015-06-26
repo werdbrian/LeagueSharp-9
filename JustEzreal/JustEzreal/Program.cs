@@ -191,7 +191,7 @@ namespace JustEzreal
 
         private static void combo()
         {
-            int mode = Config.Item("emode").GetValue<StringList>().SelectedIndex;
+           // int mode = Config.Item("emode").GetValue<StringList>().SelectedIndex;
             var target = TargetSelector.GetTarget(Q.Range, TargetSelector.DamageType.Physical);
             if (target == null || !target.IsValidTarget())
                 return;
