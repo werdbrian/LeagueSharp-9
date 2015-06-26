@@ -78,7 +78,7 @@ namespace JustEzreal
             Config.SubMenu("Combo").AddItem(new MenuItem("qhit", "Q Hitchance 1-Low, 4-Very High")).SetValue(new Slider(3, 1, 4));
             Config.SubMenu("Combo").AddItem(new MenuItem("UseW", "Use W").SetValue(true));
             Config.SubMenu("Combo").AddItem(new MenuItem("UseE", "Use E").SetValue(true));
-            Config.SubMenu("Combo").AddItem(new MenuItem("emode", "E Usage Modes").SetValue(new StringList(new[] { "To Target", "To Mouse Cursor" })));
+            Config.SubMenu("Combo").AddItem(new MenuItem("emode", "E Usage Modes").SetValue(new StringList(new string [] { "To Target", "To Mouse Cursor" })));
             Config.SubMenu("Combo").AddItem(new MenuItem("UseR", "Use R").SetValue(true));
             Config.SubMenu("Combo").AddItem(new MenuItem("Rene", "Min Enemies for R").SetValue(new Slider(2, 1, 5)));
 
