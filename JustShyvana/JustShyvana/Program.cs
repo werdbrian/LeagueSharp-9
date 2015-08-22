@@ -192,7 +192,7 @@ namespace JustShyvana
         {
             var target = TargetSelector.GetTarget(R.Range, TargetSelector.DamageType.Magical);
             var enemys = target.CountEnemiesInRange(R.Range);
-            if (target == null || !target.IsValidTarget())
+            if (target == null || enemys == null || !target.IsValidTarget())
                 return;
 
             if (R.IsReady() && Config.Item("UseR").GetValue<bool>() && target.IsValidTarget(R.Range))
