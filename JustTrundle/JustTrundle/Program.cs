@@ -119,6 +119,7 @@ namespace JustTrundle
 
             Config.AddToMainMenu();
             Drawing.OnDraw += OnDraw;
+            Orbwalking.AfterAttack += Orbwalking_AfterAttack;
             Game.OnUpdate += Game_OnGameUpdate;
             Drawing.OnEndScene += OnEndScene;
             Interrupter2.OnInterruptableTarget += Interrupter2_OnInterruptableTarget;
@@ -402,7 +403,14 @@ namespace JustTrundle
             var orbtarget = Orbwalker.GetTarget();
             Render.Circle.DrawCircle(orbtarget.Position, 100, Color.DarkOrange, 10);
         }
-
+     private static void Orbwalking_AfterAttack(AttackableUnit unit, AttackableUnit target)
+        {
+            var hero = unit as Obj_AI_Hero;
+            if (hero != null && hero.Type == GameObjectType.obj_AI_Hero)
+            {
+               Q.Cast();
+            }
+        }
 
         public static void UseSmiteOnChamp(Obj_AI_Hero target)
         {
