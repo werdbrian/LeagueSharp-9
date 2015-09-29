@@ -186,9 +186,11 @@ namespace JustTrundle
                 {
                     E.CastIfHitchanceEquals(target, HitChance.High);
                 }
-            if (Q.IsReady() && Config.Item("UseQ").GetValue<bool>())
-                Q.CastOnUnit(target);
-
+            if (Q.IsReady() && Config.Item("UseQ").GetValue<bool>() && target.IsValidTarget(400))
+            {
+                Q.Cast(target);
+                Orbwalking.ResetAutoAttackTimer;
+            }
             if (Config.Item("manualr").GetValue<KeyBind>().Active && target.IsValidTarget(R.Range) && R.IsReady())
                 R.CastOnUnit(target);
 
