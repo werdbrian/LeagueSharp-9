@@ -185,7 +185,7 @@ namespace JustTrundle
                 {
                     E.CastIfHitchanceEquals(target, HitChance.High);
                 }
-            if (Q.IsReady() && Config.Item("UseQ").GetValue<bool>()))
+            if (Q.IsReady() && Config.Item("UseQ").GetValue<bool>())
                 Q.CastOnUnit(target);
 
             if (Config.Item("manualr").GetValue<KeyBind>().Active && target.IsValidTarget(R.Range) && R.IsReady())
