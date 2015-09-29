@@ -173,7 +173,7 @@ namespace JustTrundle
 
         private static void combo()
         {
-            var target = TargetSelector.GetTarget(Q.Range, TargetSelector.DamageType.Physical);
+            var target = TargetSelector.GetTarget(800, TargetSelector.DamageType.Physical);
             if (target == null || !target.IsValidTarget())
                 return;
 
@@ -182,10 +182,10 @@ namespace JustTrundle
                 W.Cast();
 
             if (E.IsReady() && target.IsValidTarget(E.Range))
-                E.CastIfHitchanceEquals(target, HitChance.High);
-
-            if (Q.IsReady() && Config.Item("UseQ").GetValue<bool>() &&
-                target.IsValidTarget(Orbwalking.GetRealAutoAttackRange(player)))
+                {
+                    E.CastIfHitchanceEquals(target, HitChance.High);
+                }
+            if (Q.IsReady() && Config.Item("UseQ").GetValue<bool>()))
                 Q.CastOnUnit(target);
 
             if (Config.Item("manualr").GetValue<KeyBind>().Active && target.IsValidTarget(R.Range) && R.IsReady())
