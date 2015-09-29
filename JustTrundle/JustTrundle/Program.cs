@@ -189,7 +189,7 @@ namespace JustTrundle
             if (Q.IsReady() && Config.Item("UseQ").GetValue<bool>() && target.IsValidTarget(400))
             {
                 Q.Cast(target);
-                Orbwalking.ResetAutoAttackTimer;
+                Utility.DelayAction.Add(Game.Ping + 258, Orbwalking.ResetAutoAttackTimer);
             }
             if (Config.Item("manualr").GetValue<KeyBind>().Active && target.IsValidTarget(R.Range) && R.IsReady())
                 R.CastOnUnit(target);
