@@ -168,7 +168,7 @@ namespace JustTrundle
             if (W.IsReady() && target.IsValidTarget(W.Range) &&
                 Config.Item("UseW").GetValue<bool>())
                 {
-                    var pos4 = ObjectManager.Player.Position.Extend(target.Position, 200);
+                    var pos4 = ObjectManager.Player.Position.Extend(target.Position, 400);
                     W.Cast(pos4);
                 }
             if (E.IsReady() && target.IsValidTarget(E.Range))       
@@ -178,7 +178,7 @@ namespace JustTrundle
             if (Q.IsReady() && Config.Item("UseQ").GetValue<bool>() && target.IsValidTarget(400))
             {
                 Q.Cast(target);
-                Utility.DelayAction.Add(Game.Ping + 258, Orbwalking.ResetAutoAttackTimer);
+                Orbwalking.ResetAutoAttackTimer();
             }
             if (Config.Item("manualr").GetValue<KeyBind>().Active && target.IsValidTarget(R.Range) && R.IsReady())
                 R.CastOnUnit(target);
