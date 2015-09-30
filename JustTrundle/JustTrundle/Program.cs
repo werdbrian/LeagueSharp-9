@@ -395,6 +395,7 @@ namespace JustTrundle
                 Render.Circle.DrawCircle(player.Position, R.Range, System.Drawing.Color.White, 3);
 
             var orbtarget = Orbwalker.GetTarget();
+            if (orbtarget == null) return;
             Render.Circle.DrawCircle(orbtarget.Position, 100, Color.DarkOrange, 10);
         }
      private static void Orbwalking_AfterAttack(AttackableUnit unit, AttackableUnit target)
