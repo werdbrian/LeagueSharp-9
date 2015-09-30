@@ -7,7 +7,6 @@ using LeagueSharp;
 using LeagueSharp.Common;
 using LeagueSharp.Common.Data;
 using Color = System.Drawing.Color;
-using JustOlaf;
 
 namespace JustTrundle
 {
