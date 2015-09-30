@@ -170,7 +170,7 @@ namespace JustTrundle
                 Config.Item("UseW").GetValue<bool>())
                 {
                     var pos4 = ObjectManager.Player.Position.Extend(target.Position, 200);
-                    W.Cast();
+                    W.Cast(pos4);
                 }
             if (E.IsReady() && target.IsValidTarget(E.Range))       
                 {
@@ -324,7 +324,10 @@ namespace JustTrundle
 
             if (Q.IsReady() && Config.Item("hQ").GetValue<bool>() && target.IsValidTarget(Q.Range) &&
                 player.ManaPercent >= harassmana)
-                Q.CastOnUnit(target);
+                {
+                    Q.CastOnUnit(target);
+                     Orbwalking.ResetAutoAttackTimer();   
+                }
 
             if (E.IsReady() && Config.Item("hE").GetValue<bool>() && target.IsValidTarget(E.Range) && 
                 player.ManaPercent >= harassmana)
@@ -401,6 +404,7 @@ namespace JustTrundle
             if (hero != null && hero.Type == GameObjectType.obj_AI_Hero)
             {
                Q.Cast();
+               Orbwalking.ResetAutoAttackTimer();
             }
         }
 
