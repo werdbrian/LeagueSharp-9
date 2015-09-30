@@ -169,7 +169,7 @@ namespace JustTrundle
             if (W.IsReady() && target.IsValidTarget(W.Range) &&
                 Config.Item("UseW").GetValue<bool>())
                 {
-                    var pos4 = ObjectManager.Player.Position.Extend(pos3, 200);
+                    var pos4 = ObjectManager.Player.Position.Extend(target.Position, 200);
                     W.Cast();
                 }
             if (E.IsReady() && target.IsValidTarget(E.Range))       
