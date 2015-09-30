@@ -48,7 +48,7 @@ namespace JustTrundle
 
             //Ability Information - Range - Variables.
             Q = new Spell(SpellSlot.Q, 125f);
-            W = new Spell(SpellSlot.W, 900f);
+            W = new Spell(SpellSlot.W, 750f);
             E = new Spell(SpellSlot.E, 1000f);
             E.SetSkillshot(.5f, 188f, 1600f, false, SkillshotType.SkillshotCircle);
             R = new Spell(SpellSlot.R, 700f);
@@ -121,7 +121,8 @@ namespace JustTrundle
             Drawing.OnDraw += OnDraw;
             Orbwalking.AfterAttack += Orbwalking_AfterAttack;
             Game.OnUpdate += Game_OnGameUpdate;
-            Drawing.OnEndScene += OnEndScene;
+             Utility.HpBarDamageIndicator.DamageToUnit = GetComboDamage;
+            Utility.HpBarDamageIndicator.Enabled = true;
             Interrupter2.OnInterruptableTarget += Interrupter2_OnInterruptableTarget;
             AntiGapcloser.OnEnemyGapcloser += AntiGapcloser_OnEnemyGapcloser;
         }
@@ -159,30 +160,19 @@ namespace JustTrundle
             return "summonersmite";
         }
 
-        private static void OnEndScene(EventArgs args)
-        {
-            if (Config.SubMenu("Draw").Item("DrawD").GetValue<bool>())
-            {
-                foreach (var enemy in
-                    ObjectManager.Get<Obj_AI_Hero>().Where(ene => !ene.IsDead && ene.IsEnemy && ene.IsVisible))
-                {
-                    Hpi.unit = enemy;
-                    Hpi.drawDmg(CalcDamage(enemy), Color.Green);
-                }
-            }
-        }
-
         private static void combo()
         {
-            var target = TargetSelector.GetTarget(800, TargetSelector.DamageType.Physical);
+            var target = TargetSelector.GetTarget(W.Range, TargetSelector.DamageType.Physical);
             if (target == null || !target.IsValidTarget())
                 return;
 
             if (W.IsReady() && target.IsValidTarget(W.Range) &&
                 Config.Item("UseW").GetValue<bool>())
-                W.Cast();
-
-            if (E.IsReady() && target.IsValidTarget(E.Range))
+                {
+                    var pos4 = Player.Position.Extend(pos3, 200);
+                    W.Cast();
+                }
+            if (E.IsReady() && target.IsValidTarget(E.Range))       
                 {
                     E.CastIfHitchanceEquals(target, HitChance.High);
                 }
@@ -205,10 +195,10 @@ namespace JustTrundle
                 items();
         }
 
-        private static int CalcDamage(Obj_AI_Base target)
+        private static int GetComboDamage(Obj_AI_Base target)
         {
             var aa = player.GetAutoAttackDamage(target, true) * (1 + player.Crit);
-            var damage = aa;
+            var damage = 2*aa;
             Ignite = player.GetSpellSlot("summonerdot");
 
             if (Ignite.IsReady())
@@ -231,7 +221,7 @@ namespace JustTrundle
             if (Q.IsReady() && Config.Item("UseQ").GetValue<KeyBind>().Active) // qdamage
             {
 
-                damage += Q.GetDamage(target);
+                damage += 2*Q.GetDamage(target);
             }
             return (int)damage;
         }
@@ -324,7 +314,7 @@ namespace JustTrundle
         private static void harass()
         {
             var harassmana = Config.Item("harassmana").GetValue<Slider>().Value;
-            var target = TargetSelector.GetTarget(Q.Range, TargetSelector.DamageType.Physical);
+            var target = TargetSelector.GetTarget(W.Range, TargetSelector.DamageType.Physical);
             if (target == null || !target.IsValidTarget())
                 return;
 
