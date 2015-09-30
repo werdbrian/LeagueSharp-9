@@ -13,7 +13,7 @@ namespace JustTrundle
     internal class Program
     {
         public const string ChampName = "Trundle";
-        public static HpBarIndicator Hpi = new HpBarIndicator();
+        //public static HpBarIndicator Hpi = new HpBarIndicator();
         public static Menu Config;
         public static Orbwalking.Orbwalker Orbwalker;
         public static Spell Q;
@@ -120,7 +120,7 @@ namespace JustTrundle
             Drawing.OnDraw += OnDraw;
             Orbwalking.AfterAttack += Orbwalking_AfterAttack;
             Game.OnUpdate += Game_OnGameUpdate;
-             Utility.HpBarDamageIndicator.DamageToUnit = GetComboDamage;
+            Utility.HpBarDamageIndicator.DamageToUnit = GetComboDamage;
             Utility.HpBarDamageIndicator.Enabled = true;
             Interrupter2.OnInterruptableTarget += Interrupter2_OnInterruptableTarget;
             AntiGapcloser.OnEnemyGapcloser += AntiGapcloser_OnEnemyGapcloser;
