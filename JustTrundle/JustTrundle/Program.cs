@@ -121,7 +121,7 @@ namespace JustTrundle
             Drawing.OnDraw += OnDraw;
             Orbwalking.AfterAttack += Orbwalking_AfterAttack;
             Game.OnUpdate += Game_OnGameUpdate;
-             Utility.HpBarDamageIndicator.DamageToUnit = (int)GetComboDamage;
+             Utility.HpBarDamageIndicator.DamageToUnit = GetComboDamage;
             Utility.HpBarDamageIndicator.Enabled = true;
             Interrupter2.OnInterruptableTarget += Interrupter2_OnInterruptableTarget;
             AntiGapcloser.OnEnemyGapcloser += AntiGapcloser_OnEnemyGapcloser;
@@ -195,8 +195,8 @@ namespace JustTrundle
                 items();
         }
 
-private static float GetComboDamage(Obj_AI_Hero target)
-{
+    private static float GetComboDamage(Obj_AI_Hero target)
+    {
             var aa = player.GetAutoAttackDamage(target, true) * (1 + player.Crit);
             var damage = 2*aa;
             Ignite = player.GetSpellSlot("summonerdot");
@@ -223,7 +223,7 @@ private static float GetComboDamage(Obj_AI_Hero target)
 
                 damage += 2*Q.GetDamage(target);
             }
-            return (int)damage;
+            return damage;
         }
 
         private static float IgniteDamage(Obj_AI_Hero target)
