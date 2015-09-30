@@ -223,7 +223,7 @@ namespace JustTrundle
 
                 damage += 2*Q.GetDamage(target);
             }
-            return damage;
+            return (float)damage;
         }
 
         private static float IgniteDamage(Obj_AI_Hero target)
