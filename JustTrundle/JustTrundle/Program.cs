@@ -196,7 +196,7 @@ namespace JustTrundle
         }
 
 private static float GetComboDamage(Obj_AI_Hero target)
-{{
+{
             var aa = player.GetAutoAttackDamage(target, true) * (1 + player.Crit);
             var damage = 2*aa;
             Ignite = player.GetSpellSlot("summonerdot");
