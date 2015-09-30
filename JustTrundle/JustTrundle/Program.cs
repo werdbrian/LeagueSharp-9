@@ -121,7 +121,7 @@ namespace JustTrundle
             Drawing.OnDraw += OnDraw;
             Orbwalking.AfterAttack += Orbwalking_AfterAttack;
             Game.OnUpdate += Game_OnGameUpdate;
-             Utility.HpBarDamageIndicator.DamageToUnit = (int)GetComboDamage;
+             Utility.HpBarDamageIndicator.DamageToUnit = GetComboDamage;
             Utility.HpBarDamageIndicator.Enabled = true;
             Interrupter2.OnInterruptableTarget += Interrupter2_OnInterruptableTarget;
             AntiGapcloser.OnEnemyGapcloser += AntiGapcloser_OnEnemyGapcloser;
